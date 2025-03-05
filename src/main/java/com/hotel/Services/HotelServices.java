@@ -26,4 +26,13 @@ public class HotelServices {
 	public Optional<Hotels> getHotelById(Long id) {
 		return hotelRepository.findById(id);
 	}
+	
+	public String deletehotel(Long id) {
+		Optional<Hotels> h1 = hotelRepository.findById(id);
+		if (h1.isEmpty()) {
+			return "Hotel not Found";
+		}
+		hotelRepository.deleteById(id);
+		return "Hotel Deleted";
+	}
 }
